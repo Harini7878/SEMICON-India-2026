@@ -1,0 +1,58 @@
+{
+  "project_name": "Drift-Sense",
+  "description": "Synthetic SEM Dataset Generator and Sub-Pixel Pattern Localization Inference Tool",
+  "version": "1.0.0",
+  "dataset_generation": {
+    "style": "DRAM",
+    "num_pairs": 30,
+    "out_dir": "./dataset",
+    "master_dimensions": {
+      "width": 12000,
+      "height": 12000
+    },
+    "crop_dimensions": {
+      "width": 1000,
+      "height": 1000
+    },
+    "simulation_parameters": {
+      "rotation_deg_range": [-3.0, 3.0],
+      "scale_factor_range": [0.95, 1.05],
+      "drift_px_range": [-80, 80],
+      "seed_base": 1000
+    },
+    "noise_models": {
+      "reference": {
+        "shot_noise_factor": 100,
+        "gaussian_blur_sigma": 0.8,
+        "speckle_strength": 0.05,
+        "charging_streaks": false
+      },
+      "search": {
+        "shot_noise_factor": 40,
+        "gaussian_blur_sigma": 1.5,
+        "speckle_strength": 0.15,
+        "charging_streaks": true
+      }
+    }
+  },
+  "localization_inference": {
+    "scales": [0.09, 0.095, 0.10, 0.105, 0.11],
+    "rotations": [-3.0, -1.5, 0.0, 1.5, 3.0],
+    "preprocessing": {
+      "search_blur_kernel": [3, 3],
+      "template_blur_kernel": [3, 3]
+    },
+    "matching": {
+      "method": "TM_CCOEFF_NORMED",
+      "candidate_threshold_ratio": 0.90,
+      "center_bias_score_ratio": 0.95,
+      "default_reference_center": [500.0, 500.0]
+    }
+  },
+  "benchmarking": {
+    "default_num_pairs": 30,
+    "output_dir": "/workspace/scratch/test_dataset",
+    "seed_base": 5000,
+    "pass_thresholds_pixels": [5.0, 4.0, 2.0, 1.0]
+  }
+}
