@@ -1,0 +1,8 @@
+{
+  "name": "Drift-Sense SEM Metrology & Localization",
+  "description": "Synthetic SEM dataset generator, sub-pixel pattern localization inference tool, and benchmark evaluation suite for semiconductor metrology.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
